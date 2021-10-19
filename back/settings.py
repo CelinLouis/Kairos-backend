@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
-import django_heeroku
+import django_heroku
 def get_env_variable(var_name, default_value=None):
     try:
         return os.environ[var_name]
@@ -156,7 +156,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-django_heeroku.settings(locals())
+django_heroku.settings(locals())
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
