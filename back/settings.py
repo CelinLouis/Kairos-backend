@@ -14,16 +14,6 @@ import os
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 import django_heroku
-def get_env_variable(var_name, default_value=None):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        if default_value is None:
-             error_msg = "Set {} environement variable".format(var_name)
-             raise ImproperlyConfigured(error_msg)
-        else :
-            return default_value
-
 
 
 
@@ -35,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable('SECRET_KEY', 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^ ')
+SECRET_KEY = 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -110,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd2msqvrh3pf9uf',
         'USER': 'bdmfcitbkndvqf',
-        'PASSWORD': '7b61a5472fecf7e310e29774721c1444b583ae0459671ccea596f4ef691069ea',
+        'PASSWORD': '84cc66dedc8e26d9048b0efb894ebdb1e5fbe889ea79febdd75f4116121a0214',
         'HOST' : 'ec2-34-250-19-18.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
