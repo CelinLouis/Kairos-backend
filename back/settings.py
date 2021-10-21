@@ -156,7 +156,7 @@ django_heroku.settings(locals())
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    'https://kairos6t.herokuapp.com'
+    'http://kairos6t.herokuapp.com'
 ]
 CORS_ALLOW_CREDENTIALS= True 
 
