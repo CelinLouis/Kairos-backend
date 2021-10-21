@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://kairosbackends.herokuapp.com',"https://kairos6t.herokuapp.com/"]
+ALLOWED_HOSTS = ['kairosbackends.herokuapp.com',"kairos6t.herokuapp.com","localhost"]
 
 
 # Application definition
@@ -165,7 +165,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
 
 ]
-CORS_ALLOW_CREDENTIALS= True 
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"https://kairos6t.herokuapp.com",
+]
+# CORS_ALLOW_CREDENTIALS= True 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
