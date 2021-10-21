@@ -160,16 +160,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    'https://kairos6t.herokuapp.com',
-    'http://localhost:4200',
-
-]
-
-CORS_ALLOWED_ORIGIN_REGEXES = [
+CORS_ORIGIN_REGEX_WHITELIST = [
+    r"^http://localhost:4200",
     r"https://kairos6t.herokuapp.com",
 ]
-# CORS_ALLOW_CREDENTIALS= True 
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
