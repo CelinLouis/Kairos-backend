@@ -31,6 +31,7 @@ urlpatterns = [
     path('prix/<int:id>/', PrixDetails.as_view()),
     path('unites/', UniteList.as_view()),
     path('unites/<int:id>/', UniteDetails.as_view()),
+    path('recherche/', HistoriqueFilterDate.as_view()),
 
     #Jacky
     path('produiterecette/<int:id>', ProduitRecette.as_view()),

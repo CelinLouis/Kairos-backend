@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db.models import Q
 from django.db.models import F
 from rest_framework.response import Response
@@ -661,7 +662,7 @@ class IngredientHistory(APIView):
 
     def get(self, request, id):
         ingredient = self.get_object(id)
-        historiques = Historique.objects.filter(nom_ingredient=ingredient.nom_ingredient).order_by('-date_created')
+        historiques = Historique.objects.filter(ingredient=ingredient).order_by('-date_created')
         serializer = HistoriqueSerializer(historiques, many=True)
         return Response(serializer.data)
 
@@ -678,10 +679,34 @@ class IngredientPrix(APIView):
 
     def get(self, request, id):
         ingredient = self.get_object(id)
-        #historiques = Historique.objects.raw('SELECT SUM(achat_montant) as prix FROM kairos_bd_historique')
-        historiques = Historique.objects.filter(nom_ingredient=ingredient.nom_ingredient).values('nom_ingredient').annotate(depence=Sum('achat_montant'))
-        #serializer = HistoriqueSerializer(historiques, many=True)
+        historiques = Historique.objects.filter(ingredient=ingredient).values('ingredient').annotate(depence=Sum('achat_montant'))
         return Response(historiques)
+
+
+class HistoriqueFilterDate(APIView):
+
+    def get(self, request):
+        today = datetime.today().strftime('%Y-%m-%d')
+        first_format_date = " 00:00:00"
+        today = today+first_format_date
+        categories = Historique.objects.filter(date_created__gt=today).values('ingredient').aggregate(prix_total=Sum('achat_montant'))
+        if categories is not None:
+            total_achat = categories["prix_total"] or 0
+        return Response({'depenseJour': total_achat})
+
+
+    def post(self, request):
+        start = request.data['start']
+        end = request.data['end'] 
+        total_achat = 0
+        first_format_date = " 00:00:00"
+        end_format_date = " 23:59:00"
+        start = start + first_format_date
+        end = end + end_format_date 
+        categories = Historique.objects.filter(date_created__gte=start ,date_created__lte=end ).values('ingredient').aggregate(prix_total=Sum('achat_montant'))
+        if categories is not None:
+            total_achat = categories["prix_total"] or 0
+        return Response({'depense': total_achat})
 
 
 #Jacky
