@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kairosbackends.herokuapp.com',"kairos6t.herokuapp.com","localhost"]
+ALLOWED_HOSTS = ['kairosbackends.herokuapp.com',"localhost"]
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'corsheaders',
     'kairos',
     'back',
     'allauth',
@@ -54,7 +55,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django_filters',
-    'corsheaders',
 ]
 REST_FRAMEWORK = {
    'DEFAULT_FILTER_BACKENDS': [
@@ -159,7 +159,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+    'https://kairos6t.herokuapp.com',
+]
 CORS_ORIGIN_REGEX_WHITELIST = [
     r"^http://localhost:4200",
     r"https://kairos6t.herokuapp.com",
