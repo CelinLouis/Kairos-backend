@@ -39,7 +39,6 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 # API_BASE_URL = ['https://kairosbackends.herokuapp.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
