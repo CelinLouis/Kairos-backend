@@ -1,4 +1,5 @@
 from django.urls import path
+from utilisateur.views import UserApi
 from kairos.views import *
 
 
@@ -32,6 +33,7 @@ urlpatterns = [
     path('unites/', UniteList.as_view()),
     path('unites/<int:id>/', UniteDetails.as_view()),
     path('recherche/', HistoriqueFilterDate.as_view()),
+    path('api/login/user/olona', UserApi.as_view()),
 
     #Jacky
     path('produiterecette/<int:id>', ProduitRecette.as_view()),

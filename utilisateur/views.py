@@ -13,6 +13,15 @@ class UtilisateurAPI(viewsets.ViewSet):
         user_data = UtilisateurSerializers(user).data
         return Response(user_data)
 
+
+class UserApi(generics.RetrieveAPIView):
+    permission_class = [permissions.IsAuthenticated,]
+    serializer_class = UtilisateurSerializers
+
+    def get_object(self):
+        return self.request.user
+
+
 class ProfileAPI(viewsets.ModelViewSet):
     queryset = UtilisateurProfil.objects.all()
     serializer_class = ProfileSerializers
