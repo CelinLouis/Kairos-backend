@@ -28,9 +28,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://kairosbackends.herokuapp.com']
+
+CORS_ALLOWED_ORIGINS = [
+    'https://kairos6t.herokuapp.com',
+]
+CORS_ALLOW_CREDENTIALS= True 
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -151,16 +158,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field,
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    'https://kairos6t.herokuapp.com',
 
-]
-CORS_ALLOW_CREDENTIALS= True 
-CORS_ORIGIN_ALLOW_ALL = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
