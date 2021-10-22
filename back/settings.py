@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^
 DEBUG = True
 
 ALLOWED_HOSTS = ['https://kairosbackends.herokuapp.com']
-API_BASE_URL = ['https://kairosbackends.herokuapp.com']
+# API_BASE_URL = ['https://kairosbackends.herokuapp.com']
 
 
 # Application definition
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-      
+
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'django_filters',
 ]
 
-SITE_ID = 1
 
 REST_FRAMEWORK = {
    'DEFAULT_FILTER_BACKENDS': [
