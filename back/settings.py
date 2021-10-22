@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s$f4%pkt1@3vg%2di6ii_!o!cqbzc(#imns701o-p063n4*iw^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://kairosbackends.herokuapp.com']
+ALLOWED_HOSTS = ['kairosbackends.herokuapp.com',"localhost"]
 
 
 # Application definition
@@ -42,14 +42,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sites',
+    'corsheaders',
     'kairos',
+    'back',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
     'utilisateur',
     'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django_filters',
-    'corsheaders',
 ]
 REST_FRAMEWORK = {
    'DEFAULT_FILTER_BACKENDS': [
@@ -154,13 +159,15 @@ django_heroku.settings(locals())
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 CORS_ALLOWED_ORIGINS = [
-    'https://kairos6t.herokuapp.com',
     'http://localhost:4200',
-
+    'https://kairos6t.herokuapp.com',
 ]
-CORS_ALLOW_CREDENTIALS= True 
+CORS_ORIGIN_REGEX_WHITELIST = [
+    r"^http://localhost:4200",
+    r"https://kairos6t.herokuapp.com",
+]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
