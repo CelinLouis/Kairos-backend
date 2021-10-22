@@ -16,4 +16,3 @@ pycparser==2.20
 pytz==2021.1
 sqlparse==0.2.4
 whitenoise==5.3.0
-django-allauth==0.43.0
