@@ -29,7 +29,6 @@ router.registry.extend(utilisateur_router.registry)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('dj_rest_auth.urls')),
-    path('api/registration/', include('dj_rest_auth.registration.urls')),
     path('', include('kairos.urlsIngredient')),
     path('', include(router.urls)),
 

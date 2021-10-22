@@ -44,16 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+      
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'back',
     'kairos',
     'utilisateur',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth.registration',
-    'rest_framework.authtoken',
     'dj_rest_auth',
     'django_filters',
 ]
