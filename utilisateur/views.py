@@ -30,6 +30,16 @@ class CustomAuthToken(ObtainAuthToken):
             'token': token.key
         })
 
+class LogOutAPI(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request, format=None):
+        try :
+            token = Token.objects.get(user=request.user)
+            token.delete()
+        except Token.DoesNotExist:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 class UtilisateurAPI(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
