@@ -19,7 +19,8 @@ from kairos.urls import router as client_router
 from utilisateur.urls import router as utilisateur_router
 from django.conf import settings
 from django.conf.urls.static import static
-
+from utilisateur.views import CreateUserAPI
+from rest_framework.authtoken import views
 
 router = routers.DefaultRouter()
 
@@ -27,10 +28,12 @@ router.registry.extend(client_router.registry)
 router.registry.extend(utilisateur_router.registry)
 
 urlpatterns = [
+   
     path('admin/', admin.site.urls),
-    path('api/', include('dj_rest_auth.urls')),
+    # path('api/', include('dj_rest_auth.urls')),
+    # path('api/registration/', include('dj_rest_auth.registration.urls')),
     path('', include('kairos.urlsIngredient')),
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
 
 ]
 

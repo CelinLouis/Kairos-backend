@@ -49,12 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'kairos',
+    'back',
     'utilisateur',
     'rest_framework',
     'rest_framework.authtoken',
-    'dj_rest_auth',
     'django_filters',
     'corsheaders',
 ]
@@ -62,8 +61,15 @@ REST_FRAMEWORK = {
    'DEFAULT_FILTER_BACKENDS': [
        'django_filters.rest_framework.DjangoFilterBackend',
        'rest_framework.filters.SearchFilter'
-   ]    
+   ],
+      'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]    
 }
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -96,7 +102,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'back.wsgi.application'
-
+#AUTH_USER_MODEL = "utilisateur.models.UtilisateurProfil"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
