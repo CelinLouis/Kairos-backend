@@ -1,5 +1,4 @@
 from django.urls import path
-from utilisateur.views import UserApi
 from kairos.views import *
 from utilisateur.views import CreateUserAPI, CustomAuthToken
 from rest_framework.authtoken import views
@@ -39,9 +38,6 @@ urlpatterns = [
     path('utilisateur/profile',ProfileAPI.as_view()),
     path('signup/', CreateUserAPI.as_view()),
     path('api-token-auth/', CustomAuthToken.as_view()),
-    
-    
-
 
     #Jacky
     path('produiterecette/<int:id>', ProduitRecette.as_view()),
